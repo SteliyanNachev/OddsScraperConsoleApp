@@ -9,6 +9,7 @@
     using AngleSharp.Scripting.JavaScript;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Support.UI;
     using PuppeteerSharp;
 
     public class Program
@@ -36,9 +37,17 @@
             todayMatchesButton.Click();
             Thread.Sleep(3000);
 
+            //Select view by competition
+            var toggleMenu = browser.FindElement(By.XPath("//*[@id='ui-id-2-button']"));
+            toggleMenu.Click();
+            Thread.Sleep(600);
+            var compleatedButton = browser.FindElement(By.XPath("//*[@id='ui-id-5']"));
+            compleatedButton.Click();
+            Thread.Sleep(3000);
+
             //Getting information for comming up events
             //TODO: Getting information for in play events.
-            //TODO: Itteract with "view by button" and select events by competition for getting events leagues
+            
             var isNextButtonActive = true;
             while (isNextButtonActive)
             {
