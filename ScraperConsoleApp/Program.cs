@@ -36,7 +36,9 @@
             todayMatchesButton.Click();
             Thread.Sleep(3000);
 
-            //Getting matches information
+            //Getting information for comming up events
+            //TODO: Getting information for in play events.
+            //TODO: Itteract with "view by button" and select events by competition for getting events leagues
             var isNextButtonActive = true;
             while (isNextButtonActive)
             {
