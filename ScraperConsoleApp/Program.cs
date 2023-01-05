@@ -71,8 +71,12 @@
                         var teamSpan = teams.FindElements(By.TagName("span"));
                         var team1 = teamSpan[0].Text;
                         var team2 = teamSpan[1].Text;
-                    
-                        Console.WriteLine($"Time: {time}  {team1} vs {team2}");
+                        var back1 = item2.FindElement(By.ClassName("js-back-0")).FindElement(By.ClassName("js-odds")).Text;
+                        var backX = item2.FindElement(By.ClassName("js-back-1")).FindElement(By.ClassName("js-odds")).Text;
+                        var back2 = item2.FindElement(By.ClassName("js-back-2")).FindElement(By.ClassName("js-odds")).Text;
+
+
+                        Console.WriteLine($"Time: {time}  {team1} Odds: {back1} vs {team2} Odds: {back2} X Odds: {backX}");
                     }
                 }
                 
