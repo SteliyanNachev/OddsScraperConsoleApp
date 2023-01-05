@@ -51,24 +51,36 @@
             var isNextButtonActive = true;
             while (isNextButtonActive)
             {
-                var commingUpEvents = browser.FindElement(By.ClassName("js-coming-up-sport-region"));
-                var matches = commingUpEvents.FindElements(By.ClassName("biab_table-wrapper"));
+                var commingUpEvents = browser.FindElement(By.ClassName("js-inplay-sports-list"));
+                var matchesWrapper = commingUpEvents.FindElements(By.ClassName("biab_inplay-sport-wrapper"));
 
-                foreach (var item in matches)
+                foreach (var item in matchesWrapper)
                 {
+                    var leagueName = item.FindElement(By.ClassName("biab_inplay-sport-item-title"));
 
-                    var time = item.FindElement(By.ClassName("biab_market-time")).Text;
-                    var teams = item.FindElement(By.ClassName("biab_market-title-team-names"));
-                    var teamSpan = teams.FindElements(By.TagName("span"));
-                    var team1 = teamSpan[0].Text;
-                    var team2 = teamSpan[1].Text;
+                    Console.WriteLine(leagueName.Text);
 
-                    Console.WriteLine($"Time: {time}  {team1} vs {team2}");
+                    var matches = item.FindElements(By.ClassName("biab_table-wrapper"));
+
+
+                    foreach (var item2 in matches)
+                    {
+                    
+                        var time = item2.FindElement(By.ClassName("biab_market-time")).Text;
+                        var teams = item2.FindElement(By.ClassName("biab_market-title-team-names"));
+                        var teamSpan = teams.FindElements(By.TagName("span"));
+                        var team1 = teamSpan[0].Text;
+                        var team2 = teamSpan[1].Text;
+                    
+                        Console.WriteLine($"Time: {time}  {team1} vs {team2}");
+                    }
                 }
+                
 
                 browser.FindElement(By.LinkText("Next")).Click();
-                Thread.Sleep(8000);
+                Thread.Sleep(2000);
 
+                //Always return true
                 isNextButtonActive = browser.FindElement(By.LinkText("Next")).Enabled;
 
             }
